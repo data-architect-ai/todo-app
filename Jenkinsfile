@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'yarn install --production'
+                sh 'npm install'
             }
         }
         stage('Test') {
