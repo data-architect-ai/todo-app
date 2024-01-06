@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-            docker {
-                image 'node:18-alpine' 
-                args '-p 3000:3000' 
-            }
-        }
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'docker compose build'
+                sh 'yarn install --production'
             }
         }
         stage('Test') {
@@ -16,7 +12,7 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deploy') { 
+        stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh' 
                 sh 'sleep 1m'
