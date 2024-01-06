@@ -1,10 +1,10 @@
 pipeline {
-    options {
-        timeout(time: 1, unit: 'HOURS')
-    }
     agent {
-        label 'ubuntu-1804 && amd64 && docker'
-    }
+            docker {
+                image 'node:16-buster-slim' 
+                args '-p 3000:3000' 
+            }
+        }
     stages {
         stage('Build') {
             steps {
@@ -25,3 +25,4 @@ pipeline {
         }
     }
 }
+
