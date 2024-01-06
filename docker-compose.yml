@@ -24,7 +24,7 @@ services:
     command: sh -c "yarn install --production && node src/index.js"
   
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:latest
     ports:
       - 8080:8080
       - 50000:50000
