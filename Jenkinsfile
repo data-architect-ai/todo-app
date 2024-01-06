@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        nodejs 'node:18-alpine'
+    }
     stages {
         stage('Build') {
             steps {
