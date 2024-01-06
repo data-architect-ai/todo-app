@@ -1,6 +1,9 @@
 pipeline {
+    options {
+        timeout(time: 1, unit: 'HOURS')
+    }
     agent {
-        docker { image 'node:18-alpine' }
+        label 'ubuntu-1804 && amd64 && docker'
     }
     stages {
         stage('Build') {
