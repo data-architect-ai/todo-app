@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install && yarn install --production'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh './jenkins/script/test.sh'
+                sh 'npm test'
             }
         }
         stage('Deploy') {
