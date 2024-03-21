@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14.15.0-alpine
 RUN apk add --no-cache python2 g++ make
 WORKDIR /app
 COPY . .
