@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                    sh 'docker build -t yunandar711/todo-app:${env.BUILD_ID} .'
+                    sh 'docker build -t yunandar711/todo-app:${BUILD_ID} .'
                     sh 'docker images'
                 }
         }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-yunandar711', usernameVariable: 'DOCKER_CRED_USR', passwordVariable: 'DOCKER_CRED_PSW')]) { 
                     sh 'docker login -u ${DOCKER_CRED_USR} -p ${DOCKER_CRED_PSW}' 
-                    sh 'docker push yunandar711/todo-app:${env.BUILD_ID}' }
+                    sh 'docker push yunandar711/todo-app:${BUILD_ID}' }
                 }
         }
 
