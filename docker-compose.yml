@@ -1,38 +1,27 @@
-version: '3.8'
-
+version: "3.7"
 services:
-  mysql:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: my_database
-
   app:
-    image: node:18-alpine
-    working_dir: /app
-    volumes:
-      - .:/app
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
     ports:
       - 3000:3000
-    depends_on:
-      - mysql
+    working_dir: /app
+    volumes:
+      - ./:/app
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
       MYSQL_PASSWORD: 123
-      MYSQL_DB: my_database
-    command: sh -c "yarn install --production && node src/index.js"
-  
-  jenkins:
-    image: jenkins/jenkins:latest
-    ports:
-      - 8080:8080
-      - 50000:50000
+      MYSQL_DB: todo-db
+  mysql:
+    image: mysql:5.7
     volumes:
-      - jenkins:/var/jenkins_home
-
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: <password>
+      MYSQL_DATABASE: todo-db
 volumes:
-  jenkins:
+  todo-mysql-data:
 
 
 
