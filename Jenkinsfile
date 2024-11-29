@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     def gitClone = 'git clone https://github.com/yunandarz/todo-app.git'
-                    def dockerPull = 'docker pull yunandar711/todo-app'
+                    def dockerPull = 'docker pull yunandar711/todo-app:v1'
                     def dockerComposeDown = 'docker compose down --volumes'
                     def deleteImages = 'docker image prune -a --force'
                     def dockerComposeUp = 'docker compose up -d'
