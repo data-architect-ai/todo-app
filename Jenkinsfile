@@ -19,7 +19,7 @@ pipeline {
                     def deleteImages = 'docker image prune -a --force'
                     def dockerComposeUp = 'docker compose up -d'
                     
-                    sh "rm -rf todo-app"
+                    sh "sudo rm -rf todo-app"
                     sh "${gitClone} && ${dockerPull}"
                     sh "${dockerComposeDown}"
                     sh "${deleteImages}"
